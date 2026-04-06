@@ -96,15 +96,15 @@
         console.log('alreadySpun:', alreadySpun);
 
         const prizes = [
-            { name: "💅 Дизайн ногтей", color: '#FF6B6B' },
-            { name: "🧴 СПА для рук/ног", color: '#4ECDC4' },
-            { name: "💰 Скидка 10%", color: '#45B7D1' },
-            { name: "💆 Массаж воротниковой зоны 10 мин", color: '#96CEB4' },
-            { name: "💎 Депозит 1 000 руб.", color: '#FFEAA7' },
-            { name: "👑 Депозит 10 000 руб.", color: '#DDA0DD' }
+            { name: "Депозит 1 000 ₽", color: '#FF6B6B' },
+            { name: "Депозит 5 000 ₽", color: '#4ECDC4' },
+            { name: "Депозит 10 000 ₽", color: '#45B7D1' },
+            { name: "Депозит 1 000 ₽", color: '#96CEB4' },
+            { name: "Депозит 5 000 ₽", color: '#FFEAA7' },
+            { name: "Депозит 10 000 ₽", color: '#DDA0DD' }
         ];
 
-        const chances = [20, 20, 25, 20, 14, 1]; // Депозит 10000 - 1%
+        const chances = [16.66, 16.66, 16.66, 16.66, 16.66, 16.66]; // Одинаковая вероятность
 
         const canvas = document.getElementById('wheelCanvas');
         const ctx = canvas.getContext('2d');
@@ -138,7 +138,8 @@
                 ctx.fillStyle = '#fff';
                 ctx.shadowColor = '#000';
                 ctx.shadowBlur = 4;
-                ctx.fillText(prizes[i].name.split(' ')[0], 120, 10);
+                const text = prizes[i].name.replace("Депозит ", "").replace(" ₽", "");
+                ctx.fillText(text, 120, 10);
                 ctx.restore();
             }
             
